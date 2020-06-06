@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -8,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 import { setErrors, setValues } from "../../../reducers/login";
+import { setAuthentication } from "../../../reducers/user";
 import validationNames from "../../../constants/validationNames";
 
 import useStyle from "./Login.styles";
@@ -28,6 +30,7 @@ const validate = form => {
 
 const Login = () => {
   const classes = useStyle();
+  const history = useHistory();
   const { errors, values } = useSelector(({ login }) => login);
   const dispatch = useDispatch();
 
@@ -48,7 +51,8 @@ const Login = () => {
               dispatch(setErrors(validateErrors));
             } else {
               if (values.username === "admin" && values.password === "admin") {
-                console.log("good, now redirect");
+                dispatch(setAuthentication(true));
+                history.replace("/home");
               } else {
                 dispatch(
                   setErrors({
