@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import ProtectedRoute from "./misc/ProtectedRoute";
+import ProtectedRoute from "misc/ProtectedRoute";
 
-import Login from "./pages/Unauthorized/Login";
-import Home from "./pages/Authorized/Home";
+import Login from "pages/Unauthorized/Login";
+import Home from "pages/Authorized/Home";
 
 const App = () => {
   return (

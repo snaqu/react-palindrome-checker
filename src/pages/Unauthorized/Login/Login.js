@@ -8,9 +8,9 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import { setErrors, setValues } from "../../../reducers/login";
-import { setAuthentication } from "../../../reducers/user";
-import validationNames from "../../../constants/validationNames";
+import { setErrors, setValues } from "reducers/login";
+import { setAuthentication } from "reducers/user";
+import validationNames from "constants/validationNames";
 
 import useStyle from "./Login.styles";
 
