@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 import { setErrors, setValues } from "reducers/login";
-import { setAuthentication } from "reducers/user";
+import { setUser } from "reducers/user";
 import validationNames from "constants/validationNames";
 
 import useStyle from "./Login.styles";
@@ -51,7 +51,7 @@ const Login = () => {
               dispatch(setErrors(validateErrors));
             } else {
               if (values.username === "admin" && values.password === "admin") {
-                dispatch(setAuthentication(true));
+                dispatch(setUser(values.username));
                 history.replace("/home");
               } else {
                 dispatch(
