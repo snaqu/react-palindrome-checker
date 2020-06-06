@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -6,12 +7,10 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import useStyle from "./Login.styles";
+import { setErrors, setValues } from "../../../reducers/login";
+import validationNames from "../../../constants/validationNames";
 
-const validationNames = {
-  required: "This field is required",
-  incorrectValue: "Incorrect login or password",
-};
+import useStyle from "./Login.styles";
 
 const validate = form => {
   let errors = {};
@@ -29,19 +28,8 @@ const validate = form => {
 
 const Login = () => {
   const classes = useStyle();
-  const [form, setForm] = useState({ username: "", password: "" });
-  const [errors, setErrors] = useState({});
-
-  const onChange = ({ name, value }) => {
-    if (errors[name]) {
-      const newErrors = { ...errors };
-      delete newErrors[name];
-
-      setErrors(newErrors);
-    }
-
-    setForm({ ...form, [name]: value });
-  };
+  const { errors, values } = useSelector(({ login }) => login);
+  const dispatch = useDispatch();
 
   return (
     <div className={classes.wrapper}>
@@ -52,20 +40,22 @@ const Login = () => {
         <form
           className={classes.form}
           onSubmit={e => {
-            setErrors({});
+            dispatch(setErrors({}));
             e.preventDefault();
-            const validateErrors = validate(form);
+            const validateErrors = validate(values);
 
             if (Object.keys(validateErrors).length) {
-              setErrors(validateErrors);
+              dispatch(setErrors(validateErrors));
             } else {
-              if (form.username === "admin" && form.password === "admin") {
+              if (values.username === "admin" && values.password === "admin") {
                 console.log("good, now redirect");
               } else {
-                setErrors({
-                  username: validationNames.incorrectValue,
-                  password: validationNames.incorrectValue,
-                });
+                dispatch(
+                  setErrors({
+                    username: validationNames.incorrectValue,
+                    password: validationNames.incorrectValue,
+                  })
+                );
               }
             }
           }}
@@ -75,8 +65,11 @@ const Login = () => {
               <TextField
                 label="Username"
                 name="username"
-                onChange={({ target }) => onChange(target)}
-                value={form.userName}
+                onChange={({ target }) => {
+                  dispatch(setErrors({}));
+                  dispatch(setValues(target));
+                }}
+                value={values.username}
                 error={!!errors.username}
                 helperText={errors.username}
                 variant="outlined"
@@ -87,8 +80,11 @@ const Login = () => {
               <TextField
                 label="Password"
                 name="password"
-                onChange={({ target }) => onChange(target)}
-                value={form.password}
+                onChange={({ target }) => {
+                  dispatch(setErrors({}));
+                  dispatch(setValues(target));
+                }}
+                value={values.password}
                 error={!!errors.password}
                 helperText={errors.password}
                 variant="outlined"
