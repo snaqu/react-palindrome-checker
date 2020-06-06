@@ -1,7 +1,8 @@
 import React from "react";
+import AuthorizedLayout from "components/AuthorizedLayout";
 
-const Home = props => {
-  return <div>Home</div>;
+const Home = () => {
+  return <AuthorizedLayout>Home</AuthorizedLayout>;
 };
 
 export default Home;
