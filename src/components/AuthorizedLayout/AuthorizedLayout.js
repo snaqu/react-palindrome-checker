@@ -1,24 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useSelector, useDispatch } from "react-redux";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
+
+import { setUser } from "reducers/user";
+
+import useStyle from "./AuthorizedLayout.styles";
 
 const AuthorizedLayout = ({ children }) => {
+  const { userName } = useSelector(({ user }) => user);
+  const classes = useStyle();
+  const dispatch = useDispatch();
+
   return (
     <>
       <CssBaseline />
       <AppBar position="fixed">
-        <Toolbar>
+        <Toolbar className={classes.toolbar}>
           <Typography variant="h6" noWrap>
-            Home
+            Hello, {userName}
           </Typography>
-          <IconButton color="inherit" onClick={() => {}}>
+          <Button color="inherit" onClick={() => dispatch(setUser(""))}>
             Logout
-          </IconButton>
+          </Button>
         </Toolbar>
       </AppBar>
       <main>{children}</main>
