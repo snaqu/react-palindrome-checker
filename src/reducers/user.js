@@ -4,7 +4,6 @@ export const initialState = {
 };
 export const actionTypes = {
   SET_USER: "USER/SET_USER",
-  SET_AUTHENTICATION: "USER/SET_AUTHENTICATION",
 };
 
 export const reducer = (state = initialState, action) => {
@@ -13,25 +12,14 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         userName: action.userName,
+        isAuthenticated: !!action.userName,
       };
-
-    case actionTypes.SET_AUTHENTICATION:
-      return {
-        ...state,
-        isAuthenticated: !!action.auth,
-      };
-
     default:
       return state;
   }
 };
 
-export const setAuthentication = auth => ({
-  type: actionTypes.SET_AUTHENTICATION,
-  auth,
-});
-
-export const setUserName = userName => ({
+export const setUser = userName => ({
   type: actionTypes.SET_USER,
   userName,
 });
