@@ -10,7 +10,7 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <ProtectedRoute path="/home" component={Home} isPermitted={false} />
+        <ProtectedRoute path="/home" component={Home} />
         <Route path="/" component={Login} />
       </Switch>
     </Router>
