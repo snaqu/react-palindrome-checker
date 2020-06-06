@@ -30,7 +30,7 @@ const AuthorizedLayout = ({ children }) => {
           </Button>
         </Toolbar>
       </AppBar>
-      <main>{children}</main>
+      <main className={classes.main}>{children}</main>
     </>
   );
 };
