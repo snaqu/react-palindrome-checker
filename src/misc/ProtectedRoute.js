@@ -1,12 +1,11 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Route, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const ProtectedRoute = ({ isPermitted, ...props }) =>
-  isPermitted ? <Route {...props} /> : <Redirect to="/" />;
+const ProtectedRoute = ({ ...props }) => {
+  const { isAuthenticated } = useSelector(({ user }) => user);
 
-ProtectedRoute.propTypes = {
-  isPermitted: PropTypes.bool.isRequired,
+  return isAuthenticated ? <Route {...props} /> : <Redirect to="/" />;
 };
 
 export default ProtectedRoute;
