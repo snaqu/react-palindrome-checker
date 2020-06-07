@@ -2,26 +2,26 @@
   {
     "id": 1,
     "name": "Sweden",
-    "isPalindrom": false
+    "isPalindrome": false
   },
   {
     "id": 2,
     "name": "KAJAK",
-    "isPalindrom": true
+    "isPalindrome": true
   },
   {
     "id": 3,
     "name": "Noon",
-    "isPalindrom": true
+    "isPalindrome": true
   },
   {
     "id": 4,
     "name": "Refer",
-    "isPalindrom": true
+    "isPalindrome": true
   },
   {
     "id": 5,
     "name": "message",
-    "isPalindrom": false
+    "isPalindrome": false
   }
 ]

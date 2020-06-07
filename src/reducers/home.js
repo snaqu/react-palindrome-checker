@@ -1,12 +1,12 @@
 export const initialState = {
-  palindrom: "",
+  palindrome: "",
   errors: {},
   history: [],
 };
 export const actionTypes = {
   SET_ERRORS: "HOME/SET_ERRORS",
-  SET_PALINDROM: "HOME/SET_PALINDROM",
-  CLEAR_PALINDROM: "HOME/CLEAR_PALINDROM",
+  SET_PALINDROME: "HOME/SET_PALINDROME",
+  CLEAR_PALINDROME: "HOME/CLEAR_PALINDROME",
   SET_HISTORY: "HOME/SET_HISTORY",
   PUSH_TO_HISTORY: "HOME/PUSH_TO_HISTORY",
 };
@@ -19,16 +19,16 @@ export const reducer = (state = initialState, action) => {
         errors: { ...action.errors },
       };
 
-    case actionTypes.SET_PALINDROM:
+    case actionTypes.SET_PALINDROME:
       return {
         ...state,
-        palindrom: action.target.value,
+        palindrome: action.target.value,
       };
 
-    case actionTypes.CLEAR_PALINDROM:
+    case actionTypes.CLEAR_PALINDROME:
       return {
         ...state,
-        palindrom: "",
+        palindrome: "",
       };
 
     case actionTypes.SET_HISTORY:
@@ -45,7 +45,7 @@ export const reducer = (state = initialState, action) => {
           {
             id: action.item.id,
             name: action.item.name,
-            isPalindrom: action.item.isPalindrom,
+            isPalindrome: action.item.isPalindrome,
           },
         ],
       };
@@ -61,12 +61,12 @@ export const setErrors = errors => ({
 });
 
 export const setValue = target => ({
-  type: actionTypes.SET_PALINDROM,
+  type: actionTypes.SET_PALINDROME,
   target,
 });
 
 export const clearValue = () => ({
-  type: actionTypes.CLEAR_PALINDROM,
+  type: actionTypes.CLEAR_PALINDROME,
 });
 
 export const setHistory = history => ({
