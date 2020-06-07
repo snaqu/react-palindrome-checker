@@ -4,7 +4,7 @@ import { Route, Redirect } from "react-router-dom";
 import { isAuthenticated } from "utils/authentication";
 
 const ProtectedRoute = ({ ...props }) => {
-  return isAuthenticated() ? <Route {...props} /> : <Redirect to="/" />;
+  return isAuthenticated() ? <Route {...props} /> : <Redirect to="/login" />;
 };
 
 export default ProtectedRoute;
