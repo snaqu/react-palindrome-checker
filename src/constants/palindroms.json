@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Sweden",
+    "isPalindrom": false
+  },
+  {
+    "id": 2,
+    "name": "KAJAK",
+    "isPalindrom": true
+  },
+  {
+    "id": 3,
+    "name": "Noon",
+    "isPalindrom": true
+  },
+  {
+    "id": 4,
+    "name": "Refer",
+    "isPalindrom": true
+  },
+  {
+    "id": 5,
+    "name": "message",
+    "isPalindrom": false
+  }
+]
