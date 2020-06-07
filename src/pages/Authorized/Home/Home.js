@@ -49,7 +49,7 @@ const Home = () => {
           }}
         >
           <Grid container spacing={3}>
-            <Grid item xs={10}>
+            <Grid item md={10} xs={12}>
               <TextField
                 label="Palindrome"
                 name="palindrome"
@@ -64,7 +64,7 @@ const Home = () => {
                 fullWidth
               />
             </Grid>
-            <Grid container item xs={2} alignItems="center">
+            <Grid container item md={2} xs={12} alignItems="center">
               <Button
                 disabled={!palindrome}
                 fullWidth
@@ -87,7 +87,7 @@ const Home = () => {
                   >
                     {isPalindrome ? <Check /> : <Close />}
                   </ListItemIcon>
-                  <ListItemText primary={name} />
+                  <ListItemText className={classes.listText} primary={name} />
                 </ListItem>
               ))}
             </List>

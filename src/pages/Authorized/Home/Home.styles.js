@@ -12,4 +12,7 @@ export default makeStyles(theme => ({
   listIconNegative: {
     color: red[400],
   },
+  listText: {
+    wordBreak: "break-all",
+  },
 }));
