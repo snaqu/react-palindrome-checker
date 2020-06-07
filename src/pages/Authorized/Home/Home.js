@@ -26,7 +26,9 @@ const Home = () => {
   const { palindrome, errors, history } = useSelector(({ home }) => home);
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(setHistory(palindromes)), []);
+  useEffect(() => {
+    dispatch(setHistory(palindromes));
+  }, []);
 
   return (
     <AuthorizedLayout>
