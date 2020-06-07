@@ -12,22 +12,14 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Check from "@material-ui/icons/Check";
 import Close from "@material-ui/icons/Close";
 
+import AuthorizedLayout from "components/AuthorizedLayout";
 import palindromes from "constants/palindromes.json";
 import { setErrors, setValue, setHistory, clearValue, pushToHistory } from "reducers/home";
-import AuthorizedLayout from "components/AuthorizedLayout";
+
 import uniqueID from "utils/uniqueID";
+import checkPalindrome from "utils/checkPalindrome";
 
 import useStyle from "./Home.styles";
-
-const checkPalindrome = value => {
-  const lowerCaseValue = value.toLowerCase();
-  const reverseValue = lowerCaseValue
-    .split("")
-    .reverse()
-    .join("");
-
-  return reverseValue === lowerCaseValue;
-};
 
 const Home = () => {
   const classes = useStyle();
