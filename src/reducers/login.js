@@ -8,6 +8,7 @@ export const initialState = {
 export const actionTypes = {
   SET_ERRORS: "LOGIN/SET_ERRORS",
   SET_VALUES: "LOGIN/SET_VALUES",
+  CLEAR_STORE: "LOGIN/CLEAR_STORE",
 };
 
 export const reducer = (state = initialState, action) => {
@@ -27,6 +28,11 @@ export const reducer = (state = initialState, action) => {
         },
       };
 
+    case actionTypes.CLEAR_STORE:
+      return {
+        ...initialState,
+      };
+
     default:
       return state;
   }
@@ -40,4 +46,8 @@ export const setErrors = errors => ({
 export const setValues = target => ({
   type: actionTypes.SET_VALUES,
   target,
+});
+
+export const clearStore = () => ({
+  type: actionTypes.CLEAR_STORE,
 });

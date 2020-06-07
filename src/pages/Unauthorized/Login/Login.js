@@ -8,7 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import { setErrors, setValues } from "reducers/login";
+import { setErrors, setValues, clearStore } from "reducers/login";
 import { setUser } from "reducers/user";
 import validationNames from "constants/validationNames";
 import { setToken } from "utils/authentication";
@@ -64,6 +64,7 @@ const Login = () => {
               if (values.username === "admin" && values.password === "admin") {
                 dispatch(setUser(values.username));
                 setToken(uniqueID());
+                dispatch(clearStore());
                 history.push("/home");
               } else {
                 dispatch(
