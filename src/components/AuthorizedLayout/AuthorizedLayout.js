@@ -26,14 +26,14 @@ const AuthorizedLayout = ({ children }) => {
       <AppBar position="fixed">
         <Toolbar className={classes.toolbar}>
           <Typography variant="h6" noWrap>
-            Hello, {userName}
+            Hello {userName}
           </Typography>
           <Button
             color="inherit"
             onClick={() => {
               dispatch(setUser(""));
               setToken("");
-              history.push("/");
+              history.push("/login");
             }}
           >
             Logout
