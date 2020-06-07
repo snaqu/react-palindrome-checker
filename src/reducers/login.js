@@ -5,6 +5,7 @@ export const initialState = {
   },
   errors: {},
 };
+
 export const actionTypes = {
   SET_ERRORS: "LOGIN/SET_ERRORS",
   SET_VALUES: "LOGIN/SET_VALUES",

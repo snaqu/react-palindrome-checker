@@ -3,6 +3,7 @@ export const initialState = {
   errors: {},
   history: [],
 };
+
 export const actionTypes = {
   SET_ERRORS: "HOME/SET_ERRORS",
   SET_PALINDROME: "HOME/SET_PALINDROME",
