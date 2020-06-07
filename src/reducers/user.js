@@ -1,6 +1,5 @@
 export const initialState = {
   userName: "",
-  isAuthenticated: false,
 };
 export const actionTypes = {
   SET_USER: "USER/SET_USER",
@@ -12,7 +11,6 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         userName: action.userName,
-        isAuthenticated: !!action.userName,
       };
     default:
       return state;
