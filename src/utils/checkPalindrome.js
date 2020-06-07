@@ -1,11 +1,13 @@
 const checkPalindrome = value => {
-  const lowerCaseValue = value.toLowerCase();
+  if (!value || typeof value !== "string") return false;
+
+  const lowerCaseValue = value.toLowerCase().trim();
   const reverseValue = lowerCaseValue
     .split("")
     .reverse()
     .join("");
 
-  return reverseValue === lowerCaseValue;
+  return lowerCaseValue.length && reverseValue === lowerCaseValue;
 };
 
 export default checkPalindrome;
