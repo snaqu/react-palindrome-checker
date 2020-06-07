@@ -52,12 +52,12 @@ const Login = () => {
               dispatch(setErrors(validateErrors));
             } else {
               // Przy logowaniu powinien iść request do API z danymi logowania do sprawdzenia czy użytkownik o takich danych istnieje
-              // oraz czy dane do logowania są prawidłowe. W przypadku nie poprawnych danych - informacja dla użytkownika.
-              // Jeżeli użytkownik o podanych danych istnieje API powinno zwrócić np token jwt który będzie przechowywany np w localStorage.
+              // oraz czy dane do logowania są prawidłowe. W przypadku nie poprawnych danych/ braku usera - informacja dla użytkownika.
+              // Jeżeli użytkownik o podanych danych istnieje API powinno zwrócić np token jwt który będzie przechowywany w localStorage/cookies.
               // token będzie używany później przy każdym zapytaniu do API - w celu sprawdzenia dostępu lub uprawnień.
 
               // Przechowywanie danych logowania na froncie nie jest bezpieczne, bo można uzyskać do nich dostęp w łatwy sposób.
-              // Przez co narażamy się niepowołany dostęp do aplikacji. Poza tym dane musiały by być zawsze synchronizowane ręcznie
+              // Przez co narażamy się na niepowołany dostęp do aplikacji. Poza tym dane musiały by być zawsze synchronizowane ręcznie
               // gdy jakiś użytkownik założy nowe konto.
 
               if (values.username === "admin" && values.password === "admin") {
