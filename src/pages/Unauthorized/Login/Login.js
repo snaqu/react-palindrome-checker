@@ -11,6 +11,8 @@ import Typography from "@material-ui/core/Typography";
 import { setErrors, setValues } from "reducers/login";
 import { setUser } from "reducers/user";
 import validationNames from "constants/validationNames";
+import { setToken } from "utils/authentication";
+import uniqueID from "utils/uniqueID";
 
 import useStyle from "./Login.styles";
 
@@ -50,9 +52,19 @@ const Login = () => {
             if (Object.keys(validateErrors).length) {
               dispatch(setErrors(validateErrors));
             } else {
+              // Przy logowaniu powinien iść request do API z danymi logowania do sprawdzenia czy użytkownik o takich danych istnieje
+              // oraz czy dane do logowania są prawidłowe. W przypadku nie poprawnych danych - informacja dla użytkownika.
+              // Jeżeli użytkownik o podanych danych istnieje API powinno zwrócić np token jwt który będzie przechowywany np w localStorage.
+              // token będzie używany później przy każdym zapytaniu do API - w celu sprawdzenia dostępu lub uprawnień.
+
+              // Przechowywanie danych logowania na froncie nie jest bezpieczne, bo można uzyskać do nich dostęp w łatwy sposób.
+              // Przez co narażamy się niepowołany dostęp do aplikacji. Poza tym dane musiały by być zawsze synchronizowane ręcznie
+              // gdy jakiś użytkownik założy nowe konto.
+
               if (values.username === "admin" && values.password === "admin") {
                 dispatch(setUser(values.username));
-                history.replace("/home");
+                setToken(uniqueID());
+                history.push("/home");
               } else {
                 dispatch(
                   setErrors({
